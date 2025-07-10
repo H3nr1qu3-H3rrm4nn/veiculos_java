@@ -1,6 +1,5 @@
 package prog2_projeto1.controller;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -39,7 +38,7 @@ public class VeiculoController {
                 return false;
             }
 
-        } catch (SQLException e) {
+        } catch (Exception e) {
             logger.error(e.getMessage());
             return false;
         }
@@ -48,14 +47,14 @@ public class VeiculoController {
     public boolean excluir(Veiculo veiculo) {
         try {
             if (veiculoDAO.excluir(veiculo)) {
-                logger.info("Veículo excluido no controller!");
+                logger.info("Veículo excluído no controller!");
                 return true;
             } else {
                 logger.info("Erro ao excluir veículo no controller!");
                 return false;
             }
 
-        } catch (SQLException e) {
+        } catch (Exception e) {
             logger.error(e.getMessage());
             return false;
         }
@@ -63,16 +62,16 @@ public class VeiculoController {
 
     public List<Veiculo> buscarTodos() {
         try {
-            List<Veiculo> veiculos = veiculoDAO.buscarTodos();
+            List<Veiculo> veiculos = veiculoDAO.buscarTodosEspecifico();
             if (veiculos != null) {
-                logger.info("Veículo salvo no controller!");
+                logger.info("Veículos encontrados no controller!");
                 return veiculos;
             } else {
-                logger.info("Erro ao salvar veículo no controller!");
+                logger.info("Erro ao buscar veículos no controller!");
                 return null;
             }
 
-        } catch (SQLException e) {
+        } catch (Exception e) {
             logger.error(e.getMessage());
             return null;
         }
@@ -80,15 +79,16 @@ public class VeiculoController {
 
     public Veiculo buscar(int id) {
         try {
-            if (veiculoDAO.buscar(id) != null) {
+            Veiculo veiculo = veiculoDAO.buscar(id);
+            if (veiculo != null) {
                 logger.info("Veículo encontrado no controller!");
-                return veiculoDAO.buscar(id);
+                return veiculo;
             } else {
                 logger.info("Erro ao encontrar veículo no controller!");
                 return null;
             }
 
-        } catch (SQLException e) {
+        } catch (Exception e) {
             logger.error(e.getMessage());
             return null;
         }

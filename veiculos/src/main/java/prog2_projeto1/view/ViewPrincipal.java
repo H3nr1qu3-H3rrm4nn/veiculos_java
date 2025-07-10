@@ -19,14 +19,22 @@ public class ViewPrincipal extends JFrame {
 
         JMenuItem itemVeiculo = new JMenuItem("Veículos");
         JMenuItem itemCategoria = new JMenuItem("Categorias");
+        JMenuItem itemCliente = new JMenuItem("Clientes");
+        JMenuItem itemVendedor = new JMenuItem("Vendedores");
+        JMenuItem itemVendaVeiculo = new JMenuItem("Vendas de Veículos");
         JMenuItem itemRel1 = new JMenuItem("Relatório 1");
         JMenuItem itemRel2 = new JMenuItem("Relatório 2");
 
-        JSeparator separator = new JSeparator();
+        JSeparator separator1 = new JSeparator();
+        JSeparator separator2 = new JSeparator();
 
         menuCadastro.add(itemVeiculo);
-        menuCadastro.add(separator);
         menuCadastro.add(itemCategoria);
+        menuCadastro.add(separator1);
+        menuCadastro.add(itemCliente);
+        menuCadastro.add(itemVendedor);
+        menuCadastro.add(separator2);
+        menuCadastro.add(itemVendaVeiculo);
 
         menuRelatorios.add(itemRel1);
         menuRelatorios.add(itemRel2);
@@ -45,6 +53,24 @@ public class ViewPrincipal extends JFrame {
         itemCategoria.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 ViewCategoria.main(null);
+            }
+        });
+
+        itemCliente.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ViewCliente.main(null);
+            }
+        });
+
+        itemVendedor.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ViewVendedor.main(null);
+            }
+        });
+
+        itemVendaVeiculo.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ViewVendaVeiculo.main(null);
             }
         });
     }
